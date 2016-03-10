@@ -1,0 +1,110 @@
+@CHARSET "UTF-8";
+
+body {
+	background-image: url(images/kitchen-table.jpg);
+    background-size:     cover;            
+    background-repeat:   no-repeat;
+    background-position: center top;
+    background-attachment: fixed;
+    text-align:center;
+}
+
+#c4OptionTable {  
+	margin-left:auto; 
+    margin-right:auto;
+    background-color: #ffe6b3;  
+	border-radius: 6px;
+    padding: 0px 25px 25px 25px;  
+    align:right;
+    opacity: 0.7;
+    font-size: 20px;
+    text-align: left;
+}
+
+#connect4 {  
+	border-width: 4px;
+    border-style: outset;
+	margin-left:auto; 
+    margin-right:auto; 
+    background-color: #0080ff;  
+}
+
+#connect4Outer {  
+	border-collapse:collapse;	/* removes the table border */
+	margin-left:auto; 
+    margin-right:auto;
+    text-align:center;
+}
+
+#connect4 td { 
+	padding: 0px;		/* removes the white space around each board slot */
+	text-align: center;
+}
+
+.c4ColumnButton {
+    background-color: #e6e6e6;		/* light gray */
+    color: black;
+    padding: 3px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    border-radius: 15px;
+}
+
+.c4ColumnButton:hover {
+    background-color: #b3b3b3;		/* darker gray */
+    color: black;
+    padding: 3px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    border-radius: 15px;
+}
+
+.c4ColumnButton:disabled {
+    background-color: #ebebe4;	/* disabled gray */
+    color: gray;
+    padding: 3px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    border-radius: 15px;
+}
+
+.c4LinkButton {
+    background-color: #e6e6e6;
+    border-width: 1px;
+    border-style: outset;
+    color: black;
+    padding: 3px 12px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    border-radius: 15px;
+}
+
+.c4LinkButton:hover {
+    background-color: #b3b3b3;		/* darker gray */
+    border-width: 1px;
+    border-style: outset;
+    color: black;
+    padding: 3px 12px;
+    text-decoration: none;
+	display: inline-block;
+    font-size: 20px;
+    border-radius: 15px;
+}
+
+.c4ComputerButton {
+    background-color: #ebebe4;		/* light gray */
+    color: gray;
+    padding: 3px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    border-radius: 15px;
+}
