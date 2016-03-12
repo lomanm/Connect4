@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page session="true" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -22,8 +24,8 @@
 </TR>
 <TR>
 <TD>Choose difficulty level:</TD>
-<TD><input type="radio" name="level" value="1" checked> easy</TD>
-<TD><input type="radio" name="level" value="2"> hard</TD>
+<TD><input type="radio" name="level" value="1"> easy</TD>
+<TD><input type="radio" name="level" value="2" checked> hard</TD>
 </TR>
 <TR>
 <TD>Where do you want to play?</TD>

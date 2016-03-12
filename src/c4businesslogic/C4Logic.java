@@ -10,16 +10,13 @@ public class C4Logic {
 	
 	public C4Game takeTurn(C4Game inGame, int columnChoice) {
 		game = inGame;
-		r = new Random(System.currentTimeMillis());
-		difficulty = game.getDifficulty();
-		
-		if (columnChoice==0) {		// indicates its the computer's move		
-			columnChoice = getComputerChoice();
+		r = new Random(System.currentTimeMillis());		// seed random number with current time
+		difficulty = game.getDifficulty();				// obtain game setting (difficulty)
+		if (columnChoice==0) {							// indicates its the computer's move		
+			columnChoice = getComputerChoice();			// call the method that does the computer's thinking
 		}
-		
 		int[] slotPlayed = dropChip(columnChoice-1, game.isHumansTurn() ? game.getHuman().getColor() : game.getComputer().getColor());	// update the board with the chip, returns an int[] array with two elements [row,column]
 		game.setLastPlay(slotPlayed);
-		
 		if (checkForWinner(slotPlayed, false)) {
 			game.setWinner(game.isHumansTurn() ? 1 : 2);	// we have a winner (1=human won, 2=computer won)
 			game.setGameOver(true);
@@ -32,19 +29,6 @@ public class C4Logic {
 			}
 		}
 		return game;
-	}
-	
-
-	
-	public int pickRandomEmptyColumn(){		// part of the AI includes the computer player choosing a random column
-		int col=0;
-		int[] colArray = randomColumns();
-		for (int i=0;i<colArray.length;i++) {
-			if (game.getBoard().getSlot(5,colArray[i]-1).equals(" ")){
-				return colArray[i];
-			}
-		}
-		return col;			// this code will never execute, its only there for it to compile correctly
 	}
 	
 	public int[] randomColumns(){			// returns an array of integers 1-7 in random order
@@ -219,8 +203,7 @@ public class C4Logic {
 	}
 	
 	/*---------------------------------------------------------------------------------------------
-	 *  The AI methods begin here. computerMove() simply creates a delay so that the computer 
-	 *  player doesn't play too quickly (unnaturally).  Next, getComputerChoice() is called and
+	 *  The AI methods begin here.  GetComputerChoice()
 	 *  this method contains a hierarchy of possibilities the computer uses to decide where
 	 *  to drop a chip.  For example, the highest ranked possibility is that the computer has a
 	 *  move which wins the game immediately.  So this possibility will be checked for first and,
@@ -242,7 +225,7 @@ public class C4Logic {
 		if (columnChosen>0) return columnChosen;
 		columnChosen = lookForMoveThatConnects1(game.getComputer().getColor());	// Next, see if computer has a spot where a new row of four can be started (for +difficulty and later connected into a row of 4)
 		if (columnChosen>0) return columnChosen;
-		return pickRandomEmptyColumn();			// if all else fails we will choose a random empty column
+		return pickRandomEmptyColumn();			// if all else fails we will choose a random empty column, this should execute only in cases where the computer has a position of "zugzwang"
 	}
 	
 	// method looks for any play that results in a connection of four chips (i.e. a move that wins the game)
@@ -298,20 +281,40 @@ public class C4Logic {
 	}
 	
 	public int lookForMoveThatConnects1(String color){
-		// we don't do much here, but if the difficulty level is > 1 we find the first column that can be
-		// played without presenting a winning opportunity for the opponent
+		// we don't do much here, but for all difficulty levels we find the first column that can be
+		// played without presenting a winning opportunity for the opponent, if difficulty level is >1
+		// we also pick a column than can help make a winning connection later in the game
 		int[] spotToCheck = new int[2];
-		if (difficulty>0) {
-			int[] randCol = randomColumns();		// creates an integer array with '1-7' in random order
+		int[] randCol = randomColumns();		// creates an integer array with '1-7' in random order
+		for (int i=1; i<=7; i++){				// loop through the columns
+			spotToCheck[0] = getLowRow(randCol[i-1]);		// set row coordinate to evaluate
+			if (spotToCheck[0] >=0) {						// skip checking if the column is full
+				spotToCheck[1] = randCol[i-1]-1;			// set column coordinate to evaluate
+				if (!wins4NextPlayer(spotToCheck,game.getComputer().getColor()) && (difficulty==1 || connect4IsPossible(spotToCheck,game.getComputer().getColor()))) return randCol[i-1];
+			}
+		}
+		// repeat the same loop for higher difficulties but don't check for future winning connection, adding this loop fixed a bug that was causing the computer to pick colummns that would win for the human on the next move when there were better columns to choose
+		if (difficulty>1){
 			for (int i=1; i<=7; i++){				// loop through the columns
 				spotToCheck[0] = getLowRow(randCol[i-1]);		// set row coordinate to evaluate
 				if (spotToCheck[0] >=0) {						// skip checking if the column is full
 					spotToCheck[1] = randCol[i-1]-1;			// set column coordinate to evaluate
-					if (!wins4NextPlayer(spotToCheck,game.getComputer().getColor()) && connect4IsPossible(spotToCheck,game.getComputer().getColor())) return randCol[i-1];
+					if (!wins4NextPlayer(spotToCheck,game.getComputer().getColor())) return randCol[i-1];
 				}
 			}
 		}
 		return 0;
+	}
+	
+	public int pickRandomEmptyColumn(){		// part of the AI includes the computer player choosing a random column
+		int col=0;
+		int[] colArray = randomColumns();
+		for (int i=0;i<colArray.length;i++) {
+			if (game.getBoard().getSlot(5,colArray[i]-1).equals(" ")){
+				return colArray[i];
+			}
+		}
+		return col;			// this code will never execute, its only there for it to compile correctly
 	}
 	
 	// helps the AI to look ahead and see if a proposed move presents the opponent with a winning move
