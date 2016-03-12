@@ -1,7 +1,7 @@
 @CHARSET "UTF-8";
 
 body {
-	background-image: url(images/kitchen-table.jpg);
+	background-image: url(../images/kitchen-table.jpg);
     background-size:     cover;            
     background-repeat:   no-repeat;
     background-position: center top;
@@ -9,24 +9,54 @@ body {
     text-align:center;
 }
 
+#c4body1 {
+	background-image: url(../images/kitchen-table.jpg);
+    background-size:     cover;            
+    background-repeat:   no-repeat;
+    background-position: center top;
+    background-attachment: fixed;
+    text-align:center;
+}
+
+#c4body2 {
+	background-image: url(../images/park.jpg);
+    background-size:     cover;            
+    background-repeat:   no-repeat;
+    background-position: center bottom;
+    background-attachment: fixed;
+    text-align:center;
+}
+
+#c4body3 {
+	background-image: url(../images/beach3.jpg);
+    background-size:     cover;            
+    background-repeat:   no-repeat;
+    background-position: center bottom;
+    background-attachment: fixed;
+    text-align:center;
+}
+
+#introBody {
+	background-image: url(../images/c4.jpg);
+    background-size:     contain;            
+    background-repeat:   no-repeat;
+    background-position: left top;
+    background-attachment: fixed;
+    background-color: #f5f3f4;
+    text-align:center;
+}
+
 #c4OptionTable {  
 	margin-left:auto; 
     margin-right:auto;
-    background-color: #ffe6b3;  
+    background-color: #e6e6e6; 
+    /*background-color: #f5f3f4;*/
 	border-radius: 6px;
     padding: 0px 25px 25px 25px;  
     align:right;
-    opacity: 0.7;
+    opacity: 0.9;
     font-size: 20px;
     text-align: left;
-}
-
-#connect4 {  
-	border-width: 4px;
-    border-style: outset;
-	margin-left:auto; 
-    margin-right:auto; 
-    background-color: #0080ff;  
 }
 
 #connect4Outer {  
@@ -36,9 +66,31 @@ body {
     text-align:center;
 }
 
-#connect4 td { 
-	padding: 0px;		/* removes the white space around each board slot */
-	text-align: center;
+#connect4 {  
+	border-width: 8px;			/* places a border around the board */
+    border-style: outset;
+	margin-left:auto; 
+    margin-right:auto; 
+    /*background-color: #0080ff;*/  	/* light blue color of the board */
+    
+    line-height: 0;
+    margin:0;
+    padding: 0;
+}
+
+#connect4 tr td {  
+	padding: 0;		/* removes the white space around each board slot (in IE browser only*/
+	margin: 0;
+
+	/*text-align: center;
+	vertical-align:top;
+	font-size:0;
+	letter-spacing:0;
+	line-height:0;
+	margin:0;
+	box-sizing: content-box;
+    right:-1px;
+    padding-right:-1px;*/
 }
 
 .c4ColumnButton {
@@ -107,4 +159,8 @@ body {
     display: inline-block;
     font-size: 20px;
     border-radius: 15px;
+}
+
+.c4where {
+	font-size: 16px;
 }

@@ -29,12 +29,13 @@ public class C4ServletStart extends HttpServlet {
 		String humanColor = (String)request.getParameter("color");
 		int humanMove = Integer.parseInt((String)request.getParameter("turn"));
 		int difficulty = Integer.parseInt((String)request.getParameter("level"));
-			
+		request.getSession().setAttribute("c4background",request.getParameter("where"));	
+		
 		// INSTANTIATE A GAME (AND SET GAME OPTIONS THROUGH CONSTRUCTOR)
 		C4Game game = new C4Game(humanColor, humanMove, difficulty);
 		
 		// CREATE A JAVA BEAN FROM OUR GAME OBJECT
-		request.getSession().setAttribute("gameBean",game);
+		request.getSession().setAttribute("c4GameBean",game);
 		request.getSession().setAttribute("c4Active","YES");
 		
 		// DISPLAY INITIAL BOARD

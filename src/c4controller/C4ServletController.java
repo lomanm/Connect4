@@ -29,7 +29,7 @@ public class C4ServletController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// GRAB THE SESSION GAME BEAN AND ASSIGN IT TO A NEW GAME OBJECT
-		C4Game game = (C4Game) request.getSession().getAttribute("gameBean");
+		C4Game game = (C4Game) request.getSession().getAttribute("c4GameBean");
 
 		// READ FORM INPUT IF THE HUMAN JUST PLAYED
 		int columnChoice = 0;				// 1-7=human's move, 0=computer's move
@@ -42,7 +42,7 @@ public class C4ServletController extends HttpServlet {
 		game = logic.takeTurn(game,columnChoice);
 
 		// UPDATE THE SESSION JAVA BEAN WITH THE NEW LOGIC THAT JUST TOOK PLACE
-		request.getSession().setAttribute("gameBean",game);
+		request.getSession().setAttribute("c4GameBean",game);
 		
 		// PAINT THE UPDATED BOARD
 		response.sendRedirect("connect4.jsp");
