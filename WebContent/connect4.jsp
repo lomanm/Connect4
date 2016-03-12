@@ -101,7 +101,7 @@ window.location = "connect4.html"
 <c:choose>
 	<c:when test="${c4GameBean.isGameOver()}">
 		<TD height="32" colspan="7">
-		<a href="connect4.html" class="c4LinkButton">Play Again</a>
+		<a href="c4start.jsp" class="c4LinkButton">Play Again</a>
 		</TD>
 	</c:when>
 	<c:when test="${c4GameBean.isHumansTurn()}">
