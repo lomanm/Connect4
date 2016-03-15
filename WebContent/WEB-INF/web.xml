@@ -1,20 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
-  <display-name>Connect 4</display-name>
-  <servlet>
-    <servlet-name>C4ServletStart</servlet-name>
-    <servlet-class>c4controller.C4ServletStart</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>C4ServletStart</servlet-name>
-    <url-pattern>/c4begin</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>C4ServletController</servlet-name>
-    <servlet-class>c4controller.C4ServletController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>C4ServletController</servlet-name>
-    <url-pattern>/c4play</url-pattern>
-  </servlet-mapping>
+  <display-name>Claim Games</display-name>
 </web-app>

@@ -1,6 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page session="true" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+
+
+
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -8,7 +11,7 @@
 <title>Connect 4</title>
 </head>
 <body id="introBody">
-<form method="post" action="c4begin">
+<form method="post" action="C4ServletStart">
 <TABLE id="c4OptionTable">
 <tr><td colspan=3><h1>Connect 4</h1></td></tr>
 <tr><td colspan=3><h3>Options:</h3></td></tr>

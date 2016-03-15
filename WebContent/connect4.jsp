@@ -12,7 +12,7 @@
 
 <c:if test="${c4Active==null}">
 <script type="text/javascript">
-window.location = "connect4.html"
+window.location = "c4start.jsp"
 </script>
 </c:if>
 
@@ -45,7 +45,7 @@ window.location = "connect4.html"
 	</c:choose>
 
 >
-<FORM name="c4form" method="post" action="c4play">
+<FORM name="c4form" method="post" action="C4ServletController">
 <TABLE id="connect4Outer">
 <TR><TD colspan="7">
 <c:choose>
@@ -75,19 +75,19 @@ window.location = "connect4.html"
 		<TD>
 		<c:choose>
 			<c:when test="${c4GameBean.isGameOver() && c4GameBean.getBoard().getSlot(row,col) eq 'R' && c4GameBean.getBoard().isWinningSlot(row,col)}">
-       			<img src="images/red4.png" width="65" height="65">
+       			<img src="images/c4/red4.png" width="65" height="65">
     		</c:when>
     		<c:when test="${c4GameBean.isGameOver() && c4GameBean.getBoard().getSlot(row,col) eq 'Y' && c4GameBean.getBoard().isWinningSlot(row,col)}">
-       			<img src="images/yellow4.png" width="65" height="65">
+       			<img src="images/c4/yellow4.png" width="65" height="65">
     		</c:when>
 			<c:when test="${c4GameBean.getBoard().getSlot(row,col) eq ' '}">
-       			<img src="images/white.png" width="65" height="65">
+       			<img src="images/c4/white.png" width="65" height="65">
     		</c:when>
     		<c:when test="${c4GameBean.getBoard().getSlot(row,col) eq 'R'}">
-       			<img src="images/red.png" width="65" height="65">
+       			<img src="images/c4/red.png" width="65" height="65">
     		</c:when>
     		<c:when test="${c4GameBean.getBoard().getSlot(row,col) eq 'Y'}">
-       			<img src="images/yellow.png" width="65" height="65">
+       			<img src="images/c4/yellow.png" width="65" height="65">
     		</c:when>
 		</c:choose>
     	</TD>

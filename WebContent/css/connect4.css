@@ -1,7 +1,7 @@
 @CHARSET "UTF-8";
 
 body {
-	background-image: url(../images/kitchen-table.jpg);
+	background-image: url(../images/c4/kitchen-table.jpg);
     background-size:     cover;            
     background-repeat:   no-repeat;
     background-position: center top;
@@ -10,7 +10,7 @@ body {
 }
 
 #c4body1 {
-	background-image: url(../images/kitchen-table.jpg);
+	background-image: url(../images/c4/kitchen-table.jpg);
     background-size:     cover;            
     background-repeat:   no-repeat;
     background-position: center top;
@@ -19,7 +19,7 @@ body {
 }
 
 #c4body2 {
-	background-image: url(../images/park.jpg);
+	background-image: url(../images/c4/park.jpg);
     background-size:     cover;            
     background-repeat:   no-repeat;
     background-position: center bottom;
@@ -28,7 +28,7 @@ body {
 }
 
 #c4body3 {
-	background-image: url(../images/beach3.jpg);
+	background-image: url(../images/c4/beach3.jpg);
     background-size:     cover;            
     background-repeat:   no-repeat;
     background-position: center bottom;
@@ -37,7 +37,7 @@ body {
 }
 
 #introBody {
-	background-image: url(../images/c4.jpg);
+	background-image: url(../images/c4/c4.jpg);
     background-size:     contain;            
     background-repeat:   no-repeat;
     background-position: left top;
