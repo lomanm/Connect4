@@ -8,17 +8,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="css/connect4.css">
 <title>Connect 4</title>
-
-
-<c:if test="${c4Active==null}">
-<script type="text/javascript">
-window.location = "c4start.jsp"
-</script>
-</c:if>
-
-
-<c:if test="${!c4GameBean.isHumansTurn() && !c4GameBean.isGameOver()}">
+<c:if test="${username==null}">
 	<script type="text/javascript">
+		window.location = "index.jsp"
+	</script>
+</c:if>
+<c:if test="${c4Active==null}">
+	<script type="text/javascript">
+		window.location = "c4start.jsp"
+	</script>
+</c:if>
+<script type="text/javascript">
 	function initialize() {
         setTimeout('submitForm()', 750);
     }
@@ -26,12 +26,9 @@ window.location = "c4start.jsp"
         document.forms["c4form"].submit();
     }
 </script>
-</c:if>
-
-
 </head>
 
-<body onload="initialize()" 
+<body <c:if test="${!c4GameBean.isHumansTurn() && !c4GameBean.isGameOver()}">onload="initialize()" </c:if>
 	<c:choose>
 		<c:when test="${sessionScope.c4background=='1'}">
 			id="c4body1"
@@ -43,7 +40,6 @@ window.location = "c4start.jsp"
 			id="c4body3"
 		</c:otherwise>
 	</c:choose>
-
 >
 <FORM name="c4form" method="post" action="C4ServletController">
 <TABLE id="connect4Outer">

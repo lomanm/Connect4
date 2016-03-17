@@ -2,7 +2,11 @@
 <%@ page session="true" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
-
+<c:if test="${username==null}">
+<script type="text/javascript">
+window.location = "index.jsp"
+</script>
+</c:if>
 
 <html>
 <head>
